@@ -1,24 +1,41 @@
-import logo from './logo.svg';
-import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { useState } from 'react';
+import Header from './components/Header';
+import Section from './components/Section';
+import Feature from './components/Feature';
+import Footer from './components/Footer';
+import AuthModal from './components/auth/AuthModal';
+import MainPage from './components/Mainpage';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+export function App() {
+
+  const [showModal, setShowModal] = useState(false);
+  const [activeTab, setActiveTab] = useState("login");
+
+   return (
+    <Router>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <>
+              <Header onSignInClick={() => setShowModal(true)} />
+              <Section />
+              <Feature />
+              <Footer />
+              <AuthModal
+                showModal={showModal}
+                setShowModal={setShowModal}
+                activeTab={activeTab}
+                setActiveTab={setActiveTab}
+              />
+            </>
+          }
+        />
+        <Route path="/main" element={<MainPage />} />
+      </Routes>
+    </Router>
   );
 }
 
