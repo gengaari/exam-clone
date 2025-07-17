@@ -18,11 +18,52 @@ hr {
 .watch-item {
   height: 200px;
   border-radius: 8px;
+  flex: 0 0 auto;
   scroll-snap-align: start;
   transition: transform 0.3s ease;
 }
 
 .watch-item:hover {
   transform: scale(1.05);
+}
+
+.watch-row {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+} 
+
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin: 30px 0;
+}
+
+.category-card {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  height: 180px;
+  border-radius: 10px;
+  overflow: hidden;
+  filter: brightness(80%);
+  transition: filter 0.3s ease;
+  cursor: pointer;
+}
+
+.category-card:hover {
+  filter: brightness(100%);
+}
+
+.category-title {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  color: white;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.7);
 }
 
